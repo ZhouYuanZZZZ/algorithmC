@@ -59,7 +59,7 @@ void initLinkListRear(L list, int datas[],int size){
     }
 }
 
-int main() {
+int main1100() {
 
     L list = createLinkList();
 

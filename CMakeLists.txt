@@ -3,4 +3,4 @@ project(c C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(c seq/seqList.c seq/linkList.c)
+add_executable(c seq/seqList.c seq/linkList.c seq/seqStack.c seq/linkStack.c)
