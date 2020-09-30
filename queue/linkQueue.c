@@ -59,7 +59,7 @@ int deLinkQueue(LinkQueue* queue){
     return x;
 }
 
-int main(){
+int mainxxx(){
 
     LinkQueue *q = createLinkQueue();
 
