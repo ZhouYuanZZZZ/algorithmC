@@ -59,12 +59,29 @@ void preOrder(BiTree tree){
         preOrder(tree->lchild);
         preOrder(tree->rchild);
     }
+}
 
+void inOrder(BiTree tree){
+    if(tree != NULL){
+        inOrder(tree->lchild);
+        visitNode(tree);
+        inOrder(tree->rchild);
+    }
+}
+
+void postOrder(BiTree tree){
+    if(tree != NULL){
+        postOrder(tree->lchild);
+        postOrder(tree->rchild);
+        visitNode(tree);
+    }
 }
 
 
 
 int main(){
     BiTree tree =  createBiTree();
-    preOrder(tree);
+    //preOrder(tree);
+    //inOrder(tree);
+    postOrder(tree);
 }
