@@ -36,7 +36,10 @@ ThreadTree createThreadTree() {
     ThreadNode *node7 = createThreadNode(7);
 
     root->lchild = node1;
+    root->ltag = 0;
+
     root->rchild = node2;
+    root->rtag = 0;
 
     node1->lchild = node3;
     node1->rchild = node4;
@@ -52,7 +55,7 @@ ThreadTree createThreadTree() {
 
 void inThread(ThreadTree root, ThreadNode **pre) {
     if (root != NULL) {
-        inThread(root->lchild,pre);
+        inThread(root->lchild, pre);
 
         if (root->lchild == NULL) {
             root->ltag = 1;
@@ -72,7 +75,7 @@ void inThread(ThreadTree root, ThreadNode **pre) {
 void processInThread(ThreadTree root) {
 
     ThreadNode *pre = NULL;
-    ThreadNode ** preNode = &pre;
+    ThreadNode **preNode = &pre;
     if (root != NULL) {
         inThread(root, preNode);
         (*preNode)->rchild = NULL;
@@ -80,10 +83,34 @@ void processInThread(ThreadTree root) {
     }
 }
 
+ThreadNode *firstNode(ThreadNode *p) {
+    while (p->ltag == 0) {
+        p = p->lchild;
+    }
+    return p;
+}
+
+ThreadNode *nextNode(ThreadNode *p) {
+    if (p->rtag == 0) {
+        return firstNode(p->rchild);
+    }
+    return p->rchild;
+}
+
+void inOrder(ThreadTree root) {
+    ThreadNode *node = firstNode(root);
+    while (node != NULL) {
+        printf("%d ",node->data);
+        node = nextNode(node);
+    }
+}
+
 int main() {
 
     ThreadTree root = createThreadTree();
     processInThread(root);
+
+    inOrder(root);
 
     return 0;
 }
