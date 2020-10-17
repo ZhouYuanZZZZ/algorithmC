@@ -8,7 +8,7 @@ typedef struct BiTNode {
     struct BiTNode *lchild, *rchild;
 } BiTNode, *BiTree;
 
-void insertNode(BiTree tree, int data) {
+BiTNode *insertNode(BiTree tree, int data) {
 
     //二叉树为空 插入元素为根节点
     if (tree == NULL) {
@@ -18,23 +18,25 @@ void insertNode(BiTree tree, int data) {
         tree->rchild = NULL;
         tree->lchild = NULL;
 
-        return;
+        return tree;
     }
 
     //出现相同元素 返回
     if (tree->data == data) {
-        return;
+        return tree;
     }
 
     //插入左子树
     if (data < tree->data) {
-        insertNode(tree->lchild, data);
+        tree->lchild = insertNode(tree->lchild, data);
     }
 
     //插入右子树
     if (data > tree->data) {
-        insertNode(tree->rchild, data);
+        tree->rchild = insertNode(tree->rchild, data);
     }
+
+    return tree;
 }
 
 BiTNode *searchNode1(BiTree tree, int data) {
