@@ -3,4 +3,4 @@ project(c C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(c tree/bstTree.c)
+add_executable(c search/seqSearch.c)
