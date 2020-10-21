@@ -8,7 +8,7 @@ int binarySearch(int list[],int length,int elem){
     int high = length -1;
 
     while(low<=high){
-        mid = (high - low)/2;
+        mid = (high + low)/2;
 
         if(elem == list[mid]){
             return mid;
@@ -30,6 +30,8 @@ int binarySearch(int list[],int length,int elem){
 
 int main(){
 
+    int a[] = {12,24,25,27,48,59,69,78,85,99};
+    printf("%d",binarySearch(a,10,25));
     return 0;
 }
 
